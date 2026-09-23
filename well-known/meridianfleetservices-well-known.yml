@@ -1,7 +1,12 @@
 generated: '2026-07-20'
 method: searched
 host: https://meridianfleetservices.com
-documents:
+notes: No /.well-known/ discovery documents are published. Meridian Fleet Services operates a marketing
+  website only (fleet-service holding company); there is no API, OAuth/OIDC authorization server, or agent-plugin
+  surface to advertise.
+hosts:
+- host: https://meridianfleetservices.com
+  documents:
   - path: /.well-known/security.txt
     status: 404
   - path: /.well-known/openid-configuration
@@ -12,9 +17,8 @@ documents:
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
-  - path: /security.txt
-    status: 404
-notes: >-
-  No /.well-known/ discovery documents are published. Meridian Fleet Services
-  operates a marketing website only (fleet-service holding company); there is no
-  API, OAuth/OIDC authorization server, or agent-plugin surface to advertise.
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
